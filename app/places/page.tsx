@@ -199,9 +199,7 @@ export default function PlacesPage() {
           <div className="card-subtitle" style={{ flex: 1 }}>
             Hodnotíš jako <strong>{userName}</strong>
           </div>
-          <button className="btn btn-secondary" onClick={openNameModal}>
-            Změnit jméno
-          </button>
+          
           <button
             type="button"
             aria-label="Přidat podnik"
