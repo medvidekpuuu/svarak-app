@@ -1,0 +1,383 @@
+/* ====== RESET & BASE ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #5a0a0a 0%, #7a0c0c 40%, #8b0f0f 70%, #5a0a0a 100%);
+  color: #111827;
+}
+
+/* ====== DESIGN TOKENS ====== */
+
+:root {
+  --primary: #7f1d1d;         /* tmavá bordó */
+  --primary-soft: #fee2e2;    /* světle červená */
+  --primary-soft-strong: rgba(127, 29, 29, 0.4);
+  --card-bg: rgba(249, 250, 251, 0.8);
+  --card-inner-bg: #ffffff;
+  --radius-lg: 28px;
+  --radius-md: 22px;
+  --radius-sm: 12px;
+  --shadow-shell: 0 28px 80px rgba(15, 23, 42, 0.4);
+  --shadow-card: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+/* ====== APP LAYOUT (bílý mobil uprostřed) ====== */
+
+.page-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 12px;
+}
+
+.page-shell {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px 24px;
+  box-shadow: var(--shadow-shell);
+  backdrop-filter: blur(18px);
+}
+
+/* ====== TEXT STYLY ====== */
+
+h1 {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-subtitle {
+  font-size: 15px;
+  color: #4b5563;
+}
+
+.text-small {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0;
+}
+
+.text-error {
+  font-size: 13px;
+  color: #b91c1c;
+  margin: 4px 0 6px;
+}
+
+/* ====== KARTY ====== */
+
+.card {
+  background: var(--card-inner-bg);
+  border-radius: var(--radius-md);
+  padding: 14px 14px 14px;
+  box-shadow: var(--shadow-card);
+}
+
+/* ====== BUTTONY ====== */
+
+.btn {
+
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+    background 0.12s ease-out, color 0.12s ease-out;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 16px 30px var(--primary-soft-strong);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px var(--primary-soft-strong);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 10px 22px var(--primary-soft-strong);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding-inline: 10px;
+}
+
+.btn-secondary:hover {
+  background: rgba(127, 29, 29, 0.06);
+}
+
+/* ====== INPUTY ====== */
+
+.input-wrapper {
+  border-radius: var(--radius-sm);
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 15px;
+  color: #111827;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+/* ====== SEZNAM PODNIKŮ ====== */
+
+.list {
+  list-style: none;
+  margin: 12px 0 0 0;
+  padding: 0;
+}
+
+.place-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 14px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.07s ease-out, box-shadow 0.07s ease-out,
+    background 0.1s ease-out;
+}
+
+.place-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+.place-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.place-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.place-rating-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.place-rating-icon {
+  color: #facc15;
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+.place-rating-main {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.place-rating-meta {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.btn-chip {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ====== DETAIL PODNIKU – BACK ROW ====== */
+
+.back-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #4b5563;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.back-row span:first-child {
+  font-size: 16px;
+}
+
+/* ====== SLIDER (hlasování) ====== */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.slider-value {
+  font-weight: 700;
+}
+
+.slider {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  outline: none;
+}
+
+/* track */
+.slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+.slider::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+/* thumb */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(127, 29, 29, 0.55);
+  margin-top: -8px;
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(127, 29, 29, 0.55);
+}
+
+/* ====== RATING ITEMS (seznam hlasů v detailu) ====== */
+
+.rating-item {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.rating-top {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rating-meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ====== MODAL (přidání podniku) ====== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+}
+
+.modal-card {
+  background: var(--card-inner-bg);
+  border-radius: var(--radius-md);
+  padding: 18px 16px 16px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.5);
+  width: 100%;
+  max-width: 360px;
+}
+
+/* ====== RESPONSIVE DROBNOSTI ====== */
+
+@media (max-width: 480px) {
+  .page-root {
+    padding: 16px 8px;
+  }
+
+  .page-shell {
+    border-radius: 24px;
+    padding-inline: 14px;
+  }
+
+  .place-item {
+    padding-inline: 12px;
+  }
+}
